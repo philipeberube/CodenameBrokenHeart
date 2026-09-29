@@ -8,14 +8,19 @@ public class Player : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        Application.targetFrameRate = 60;
     }
 
     // Update is called once per frame
     void Update()
     {
+        
+        //HandleMovement();
+    }
+
+    void FixedUpdate()
+    {
         Movement();
-        HandleMovement();
     }
 
     private void Movement()
@@ -40,28 +45,28 @@ public class Player : MonoBehaviour
         
     }
 
-    private void HandleMovement()
-    {
-        // Locks rotation directly in code so the physics engine cannot tilt the character
-        //playerRb.freezeRotation = true;
+    //private void HandleMovement()
+    //{
+    //    // Locks rotation directly in code so the physics engine cannot tilt the character
+    //    //playerRb.freezeRotation = true;
 
-        float input = Input.GetAxisRaw("Horizontal");
+    //    float input = Input.GetAxisRaw("Horizontal");
 
-        // Explicitly sets the Y value to 0 to prevent erratic vertical flying
-        Vector2 movement = new Vector2(input * speed * Time.deltaTime, 0);
-        transform.Translate(movement);
+    //    // Explicitly sets the Y value to 0 to prevent erratic vertical flying
+    //    Vector2 movement = new Vector2(input * speed * Time.deltaTime, 0);
+    //    transform.Translate(movement);
 
-        if (input != 0)
-        {
-            //_animator.SetBool("isRunning", true);
-            // Replaces your buggy FlipCharacterX logic to stop the rapid visual flickering
-            //spriteRenderer.flipX = input < 0;
-        }
-        else
-        {
-            //_animator.SetBool("isRunning", false);
-        }
+    //    if (input != 0)
+    //    {
+    //        //_animator.SetBool("isRunning", true);
+    //        // Replaces your buggy FlipCharacterX logic to stop the rapid visual flickering
+    //        //spriteRenderer.flipX = input < 0;
+    //    }
+    //    else
+    //    {
+    //        //_animator.SetBool("isRunning", false);
+    //    }
 
 
-    }
+    //}
 }
