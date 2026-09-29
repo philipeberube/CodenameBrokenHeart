@@ -19,32 +19,23 @@ public class Player : MonoBehaviour
 
     private void Movement()
     {
-        bool rightIsPressed = Input.GetKey(KeyCode.RightArrow);
-        bool leftIsPressed = Input.GetKey(KeyCode.LeftArrow);
-        bool upIsPressed = Input.GetKey(KeyCode.UpArrow);
-        bool downIsPressed = Input.GetKey(KeyCode.DownArrow);
-
-        if (rightIsPressed)
+                       
+        if (Input.GetKey(KeyCode.RightArrow))
         {
             transformComponent.position += new Vector3(speed, 0, 0);
-
         }
-        if (leftIsPressed)
+        if (Input.GetKey(KeyCode.LeftArrow))
         {
-            transformComponent.position += new Vector3(-speed, 0, 0);
+            transformComponent.position -= new Vector3(speed, 0, 0);
         }
-        if (upIsPressed)
+        if (Input.GetKey(KeyCode.UpArrow))
         {
             transformComponent.position += new Vector3(0, speed, 0);
         }
-        if (downIsPressed)
+        if (Input.GetKey(KeyCode.DownArrow))
         {
-            transformComponent.position += new Vector3(0, -speed, 0);
+            transformComponent.position -= new Vector3(0, speed, 0);
         }
-        else
-        {
-            transformComponent.position += new Vector3(0, 0, 0);
-        }
-
+        
     }
 }
