@@ -131,7 +131,7 @@ GameObject:
   - component: {fileID: 79667819}
   - component: {fileID: 79667818}
   - component: {fileID: 79667817}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Floor (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -298,7 +298,7 @@ GameObject:
   - component: {fileID: 124660875}
   - component: {fileID: 124660874}
   - component: {fileID: 124660873}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Floor (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -635,7 +635,7 @@ GameObject:
   - component: {fileID: 527399583}
   - component: {fileID: 527399582}
   - component: {fileID: 527399581}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1170,6 +1170,7 @@ GameObject:
   - component: {fileID: 1223096455}
   - component: {fileID: 1223096456}
   - component: {fileID: 1223096457}
+  - component: {fileID: 1223096458}
   m_Layer: 0
   m_Name: player
   m_TagString: Untagged
@@ -1361,6 +1362,28 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1223096458
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1223096450}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb0147d4c47af3e49a2cf976b0857716, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Assets.Scripts.PlayerJumpCooldown
+  rb: {fileID: 1223096456}
+  jumpForce: 8
+  jumpCooldown: 0.1
+  nextJumpTime: 0
+  groundCheck: {fileID: 1223096454}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 8
+  checkRadius: 0.8
+  isGrounded: 0
 --- !u!1 &1482467641
 GameObject:
   m_ObjectHideFlags: 0
@@ -1373,7 +1396,7 @@ GameObject:
   - component: {fileID: 1482467644}
   - component: {fileID: 1482467643}
   - component: {fileID: 1482467642}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Floor (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1540,7 +1563,7 @@ GameObject:
   - component: {fileID: 1714867278}
   - component: {fileID: 1714867277}
   - component: {fileID: 1714867276}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Floor (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
