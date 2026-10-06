@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    [SerializeField] public SpriteRenderer spriteRenderer;
     [SerializeField] public Animator animator;
     [SerializeField] private float speed = .1f;
     [SerializeField] private Transform transformComponent;
@@ -53,7 +54,7 @@ public class Player : MonoBehaviour
         {
             animator.SetBool("isRunning", true);
             
-            //spriteRenderer.flipX = input < 0;
+            spriteRenderer.flipX = input < 0;
         }
         else
         {
