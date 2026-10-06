@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-
+    [SerializeField] public Animator animator;
     [SerializeField] private float speed = .1f;
     [SerializeField] private Transform transformComponent;
     //[SerializeField] private float jumpForce = 5f;
@@ -29,7 +29,8 @@ public class Player : MonoBehaviour
 
     private void Movement()
     {
-                       
+        float input = Input.GetAxisRaw("Horizontal");
+
         if (Input.GetKey(KeyCode.RightArrow))
         {
             transformComponent.position += new Vector3(speed * Time.deltaTime, 0, 0);
@@ -46,9 +47,22 @@ public class Player : MonoBehaviour
         {
             transformComponent.position -= new Vector3(0, speed * Time.deltaTime, 0);
         }
-        
+
+
+        if (input != 0)
+        {
+            animator.SetBool("isRunning", true);
+            
+            //spriteRenderer.flipX = input < 0;
+        }
+        else
+        {
+            animator.SetBool("isRunning", false);
+            //aa
+        }
+
     }
-    
+
     //private void Jump()
     //{
     //    if (Input.GetKeyDown(KeyCode.Space))
