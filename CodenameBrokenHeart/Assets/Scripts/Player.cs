@@ -5,10 +5,13 @@ public class Player : MonoBehaviour
 
     [SerializeField] private float speed = .1f;
     [SerializeField] private Transform transformComponent;
+    //[SerializeField] private float jumpForce = 5f;
+    private Rigidbody2D rb;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         Application.targetFrameRate = 60;
+        rb = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
@@ -21,6 +24,7 @@ public class Player : MonoBehaviour
     void FixedUpdate()
     {
         Movement();
+        //Jump();
     }
 
     private void Movement()
@@ -44,7 +48,14 @@ public class Player : MonoBehaviour
         }
         
     }
-
+    
+    //private void Jump()
+    //{
+    //    if (Input.GetKeyDown(KeyCode.Space))
+    //    {
+    //        rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+    //    }
+    //}
     //private void HandleMovement()
     //{
     //    // Locks rotation directly in code so the physics engine cannot tilt the character
