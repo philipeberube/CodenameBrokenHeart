@@ -1319,6 +1319,7 @@ MonoBehaviour:
   animator: {fileID: 1223096457}
   speed: 7
   transformComponent: {fileID: 1223096454}
+  rigidbody: {fileID: 1223096456}
 --- !u!50 &1223096456
 Rigidbody2D:
   serializedVersion: 5
