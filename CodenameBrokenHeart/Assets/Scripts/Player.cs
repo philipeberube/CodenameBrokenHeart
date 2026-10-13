@@ -54,11 +54,21 @@ public class Player : MonoBehaviour
 
         if (input2 != 0)
         {
-            animator.SetFloat("isJump",  input2);
+            if (input2 > 0)
+            {
+                animator.SetBool("isJump", true);
+                animator.SetBool("isFall", false);
+            }
+            else
+            {
+                animator.SetBool("isFall", true);
+                animator.SetBool("isJump", false);
+            }
         }
         else
         {
-            animator.SetFloat("isJump",  0);
+            animator.SetBool("isJump",  false);
+            animator.SetBool("isFall", false);
         }
 
 
