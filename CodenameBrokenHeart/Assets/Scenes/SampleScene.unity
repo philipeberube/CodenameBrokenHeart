@@ -1385,12 +1385,15 @@ MonoBehaviour:
   jumpForce: 8
   jumpCooldown: 0.1
   nextJumpTime: 0
+  attackCooldown: 0.1
+  nextAttackTime: 0
   groundCheck: {fileID: 1223096454}
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
   checkRadius: 0.8
   isGrounded: 0
+  animator: {fileID: 1223096457}
 --- !u!1 &1482467641
 GameObject:
   m_ObjectHideFlags: 0
