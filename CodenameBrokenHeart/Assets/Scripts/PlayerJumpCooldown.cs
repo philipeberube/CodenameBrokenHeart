@@ -20,6 +20,8 @@ namespace Assets.Scripts
         [SerializeField] private float checkRadius = 0.1f;
         [SerializeField] private bool isGrounded = false;
         [SerializeField] public Animator animator;
+        [SerializeField] public bool isTransitionMuted = false;
+        [SerializeField] private float nextAnimTime = 0f;
         private void Start()
         {
             rb = GetComponent<Rigidbody2D>();
@@ -29,8 +31,14 @@ namespace Assets.Scripts
 
             animator.SetBool("isBrawl", false);
             animator.SetBool("isAA", false);
+
+            if(Time.time >= nextAnimTime)
+            {
+                isTransitionMuted = false;
+            }
+
             isGrounded = Physics2D.OverlapCircle(groundCheck.position, checkRadius, groundLayer);
-            if (Input.GetKeyDown(KeyCode.Space) && isGrounded && Time.time >= nextJumpTime)
+            if (Input.GetKeyDown(KeyCode.X) && isGrounded && Time.time >= nextJumpTime)
             {
                 Jump();
                 
@@ -49,7 +57,11 @@ namespace Assets.Scripts
             }
             else
             {
-                animator.SetBool("isAA", true);
+
+                animator.Play("aerialbrawl");
+                isTransitionMuted = true;
+                nextAnimTime = 1f;
+                
             }
 
 

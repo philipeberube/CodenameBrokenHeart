@@ -130,12 +130,12 @@ TextureImporter:
       name: Kick_0
       rect:
         serializedVersion: 2
-        x: 45
+        x: 46
         y: 0
-        width: 32
-        height: 69
+        width: 30
+        height: 68
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -152,12 +152,12 @@ TextureImporter:
       name: Kick_1
       rect:
         serializedVersion: 2
-        x: 178
+        x: 179
         y: 0
-        width: 36
-        height: 69
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 34
+        height: 68
+      alignment: 9
+      pivot: {x: 0.33505517, y: 0.49083647}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -174,12 +174,12 @@ TextureImporter:
       name: Kick_2
       rect:
         serializedVersion: 2
-        x: 300
+        x: 301
         y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 62
+        height: 63
+      alignment: 9
+      pivot: {x: 0.27386573, y: 0.53461826}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -196,12 +196,12 @@ TextureImporter:
       name: Kick_3
       rect:
         serializedVersion: 2
-        x: 426
+        x: 427
         y: 0
-        width: 66
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 64
+        height: 63
+      alignment: 9
+      pivot: {x: 0.28093243, y: 0.49010882}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -218,12 +218,12 @@ TextureImporter:
       name: Kick_4
       rect:
         serializedVersion: 2
-        x: 556
+        x: 557
         y: 0
-        width: 35
-        height: 65
+        width: 33
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -240,7 +240,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 65da19ea316b3884eb9f22b2cda515cc
     internalID: 0
     vertices: []
     indices: 
@@ -248,7 +248,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries: []
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":0,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
       Kick_0: 4875550202295362856
       Kick_1: 7382034801322492081
