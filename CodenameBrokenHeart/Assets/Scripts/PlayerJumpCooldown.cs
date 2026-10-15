@@ -15,7 +15,8 @@ namespace Assets.Scripts
         [SerializeField] private float nextJumpTime = 0f;
         [SerializeField] private float attackCooldown = 0.1f;
         [SerializeField] private float nextAttackTime = 0f;
-        [SerializeField] Transform groundCheck;
+        [SerializeField] Transform transformComponent;
+
         [SerializeField] LayerMask groundLayer;
         [SerializeField] private float checkRadius = 0.1f;
         [SerializeField] private bool isGrounded = false;
@@ -37,7 +38,7 @@ namespace Assets.Scripts
                 isTransitionMuted = false;
             }
 
-            isGrounded = Physics2D.OverlapCircle(groundCheck.position, checkRadius, groundLayer);
+            isGrounded = Physics2D.OverlapCircle(transformComponent.position, checkRadius, groundLayer);
             if (Input.GetKeyDown(KeyCode.X) && isGrounded && Time.time >= nextJumpTime)
             {
                 Jump();

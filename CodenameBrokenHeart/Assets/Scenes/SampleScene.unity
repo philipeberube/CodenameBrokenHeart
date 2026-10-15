@@ -1174,7 +1174,6 @@ GameObject:
   - component: {fileID: 1223096455}
   - component: {fileID: 1223096456}
   - component: {fileID: 1223096457}
-  - component: {fileID: 1223096458}
   m_Layer: 0
   m_Name: player
   m_TagString: Untagged
@@ -1315,11 +1314,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2013ce4ec9f7c2a4d91bead6d3d6fb23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player
+  jumpForce: 8
+  jumpCooldown: 0.1
+  nextJumpTime: 0
+  attackCooldown: 0.1
+  nextAttackTime: 0
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 8
+  checkRadius: 0.8
+  isGrounded: 0
+  isTransitionMuted: 0
+  nextAnimTime: 0
   spriteRenderer: {fileID: 1223096453}
   animator: {fileID: 1223096457}
   speed: 7
   transformComponent: {fileID: 1223096454}
-  rigidbody: {fileID: 1223096456}
+  rb: {fileID: 0}
 --- !u!50 &1223096456
 Rigidbody2D:
   serializedVersion: 5
@@ -1369,33 +1380,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &1223096458
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1223096450}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb0147d4c47af3e49a2cf976b0857716, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Assets.Scripts.PlayerJumpCooldown
-  rb: {fileID: 1223096456}
-  jumpForce: 8
-  jumpCooldown: 0.1
-  nextJumpTime: 0
-  attackCooldown: 0.1
-  nextAttackTime: 0
-  groundCheck: {fileID: 1223096454}
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 8
-  checkRadius: 0.8
-  isGrounded: 0
-  animator: {fileID: 1223096457}
-  isTransitionMuted: 0
-  nextAnimTime: 0
 --- !u!1 &1482467641
 GameObject:
   m_ObjectHideFlags: 0

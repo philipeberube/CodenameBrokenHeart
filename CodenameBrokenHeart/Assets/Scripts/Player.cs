@@ -1,7 +1,23 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    [SerializeField] private float jumpForce = 5f;
+    [SerializeField] private float jumpCooldown = 0.1f;
+    [SerializeField] private float nextJumpTime = 0f;
+    [SerializeField] private float attackCooldown = 0.1f;
+    [SerializeField] private float nextAttackTime = 0f;
+    [SerializeField] LayerMask groundLayer;
+    [SerializeField] private float checkRadius = 0.1f;
+    [SerializeField] private bool isGrounded = false;
+    [SerializeField] public bool isTransitionMuted = false;
+    [SerializeField] private float nextAnimTime = 0f;
+
     [SerializeField] public SpriteRenderer spriteRenderer;
     [SerializeField] public Animator animator;
     [SerializeField] private float speed = .1f;
@@ -24,6 +40,27 @@ public class Player : MonoBehaviour
 
     void FixedUpdate()
     {
+
+        animator.SetBool("isBrawl", false);
+        animator.SetBool("isAA", false);
+
+        if (Time.time >= nextAnimTime)
+        {
+            isTransitionMuted = false;
+        }
+
+        isGrounded = Physics2D.OverlapCircle(transformComponent.position, checkRadius, groundLayer);
+        if (Input.GetKeyDown(KeyCode.X) && isGrounded && Time.time >= nextJumpTime)
+        {
+            Jump();
+
+        }
+        else if (Input.GetKeyDown(KeyCode.Z) && Time.time >= nextAttackTime)
+        {
+            attack();
+        }
+
+
         Movement();
         //Jump();
     }
@@ -51,7 +88,7 @@ public class Player : MonoBehaviour
         }
 
 
-        if (input2 != 0)
+        if (input2 != 0 && !isTransitionMuted)
         {
             if (input2 > 0)
             {
@@ -85,6 +122,34 @@ public class Player : MonoBehaviour
 
     }
 
+    
+
+    private void attack()
+    {
+        if (isGrounded)
+        {
+            animator.SetBool("isBrawl", true);
+        }
+        else
+        {
+
+            animator.Play("aerialbrawl");
+            isTransitionMuted = true;
+            nextAnimTime = Time.time + 0.5f;
+
+        }
+
+
+        nextAttackTime = Time.time + attackCooldown;
+    }
+
+    private void Jump()
+    {
+
+        rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
+        nextJumpTime = Time.time + jumpCooldown;
+    }
+
     //private void Jump()
     //{
     //    if (Input.GetKeyDown(KeyCode.Space))
@@ -116,4 +181,6 @@ public class Player : MonoBehaviour
 
 
     //}
+
+
 }
