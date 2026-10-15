@@ -50,6 +50,8 @@ public class Player : MonoBehaviour
         }
 
         isGrounded = Physics2D.OverlapCircle(transformComponent.position, checkRadius, groundLayer);
+        animator.SetBool("isGrounded",  isGrounded);
+
         if (Input.GetKeyDown(KeyCode.X) && isGrounded && Time.time >= nextJumpTime)
         {
             Jump();
