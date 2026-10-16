@@ -9,14 +9,14 @@ public class Player : MonoBehaviour
 {
     [SerializeField] private float jumpForce = 5f;
     [SerializeField] private float jumpCooldown = 0.1f;
-    [SerializeField] private float nextJumpTime = 0f;
+    [SerializeField] private float nextJumpOcc = 0f;
     [SerializeField] private float attackCooldown = 0.1f;
-    [SerializeField] private float nextAttackTime = 0f;
+    [SerializeField] private float nextAttackOcc = 0f;
     [SerializeField] LayerMask groundLayer;
     [SerializeField] private float checkRadius = 0.1f;
     [SerializeField] private bool isGrounded = false;
     [SerializeField] public bool isTransitionMuted = false;
-    [SerializeField] private float nextAnimTime = 0f;
+    [SerializeField] private float nextAnimOcc = 0f;
 
     [SerializeField] public SpriteRenderer spriteRenderer;
     [SerializeField] public Animator animator;
@@ -44,7 +44,7 @@ public class Player : MonoBehaviour
         animator.SetBool("isBrawl", false);
         animator.SetBool("isAA", false);
 
-        if (Time.time >= nextAnimTime)
+        if (Time.time >= nextAnimOcc)
         {
             isTransitionMuted = false;
         }
@@ -52,12 +52,12 @@ public class Player : MonoBehaviour
         isGrounded = Physics2D.OverlapCircle(transformComponent.position, checkRadius, groundLayer);
         animator.SetBool("isGrounded",  isGrounded);
 
-        if (Input.GetKeyDown(KeyCode.X) && isGrounded && Time.time >= nextJumpTime)
+        if (Input.GetKeyDown(KeyCode.X) && isGrounded && Time.time >= nextJumpOcc)
         {
             Jump();
 
         }
-        else if (Input.GetKeyDown(KeyCode.Z) && Time.time >= nextAttackTime)
+        else if (Input.GetKeyDown(KeyCode.Z) && Time.time >= nextAttackOcc)
         {
             attack();
         }
@@ -131,25 +131,27 @@ public class Player : MonoBehaviour
         if (isGrounded)
         {
             animator.SetBool("isBrawl", true);
+            isTransitionMuted = true;
+            nextAnimOcc = Time.time + 0.5f;
         }
         else
         {
 
             animator.Play("aerialbrawl");
             isTransitionMuted = true;
-            nextAnimTime = Time.time + 0.5f;
+            nextAnimOcc = Time.time + 0.5f;
 
         }
 
 
-        nextAttackTime = Time.time + attackCooldown;
+        nextAttackOcc = Time.time + attackCooldown;
     }
 
     private void Jump()
     {
 
         rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
-        nextJumpTime = Time.time + jumpCooldown;
+        nextJumpOcc = Time.time + jumpCooldown;
     }
 
     //private void Jump()
