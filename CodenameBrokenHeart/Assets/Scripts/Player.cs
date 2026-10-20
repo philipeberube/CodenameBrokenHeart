@@ -17,12 +17,15 @@ public class Player : MonoBehaviour
     [SerializeField] private bool isGrounded = false;
     [SerializeField] public bool isTransitionMuted = false;
     [SerializeField] private float nextAnimOcc = 0f;
+    
 
     [SerializeField] public SpriteRenderer spriteRenderer;
     [SerializeField] public Animator animator;
-    [SerializeField] private float speed = .1f;
+    [SerializeField] private float speed = 3f;
     [SerializeField] private Transform transformComponent;
     [SerializeField] public Rigidbody2D rb;
+
+    public bool isRunning = false;
     //[SerializeField] private float jumpForce = 5f;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -47,9 +50,12 @@ public class Player : MonoBehaviour
         if (Time.time >= nextAnimOcc)
         {
             isTransitionMuted = false;
+            speed = 4f;
+
         }
 
-        isGrounded = Physics2D.OverlapCircle(transformComponent.position, checkRadius, groundLayer);
+
+            isGrounded = Physics2D.OverlapCircle(transformComponent.position, checkRadius, groundLayer);
         animator.SetBool("isGrounded",  isGrounded);
 
         if (Input.GetKeyDown(KeyCode.X) && isGrounded && Time.time >= nextJumpOcc)
@@ -57,7 +63,7 @@ public class Player : MonoBehaviour
             Jump();
 
         }
-        else if (Input.GetKeyDown(KeyCode.Z) && Time.time >= nextAttackOcc)
+        else if (Input.GetKeyDown(KeyCode.Z) && Time.time >= nextAnimOcc)
         {
             attack();
         }
@@ -71,6 +77,11 @@ public class Player : MonoBehaviour
     {
         float input = Input.GetAxisRaw("Horizontal");
         float input2 = rb.linearVelocityY;
+
+        if(input2 == 0 && isTransitionMuted)
+        {
+            speed = 1f;
+        }
 
         if (Input.GetKey(KeyCode.RightArrow))
         {
@@ -113,12 +124,14 @@ public class Player : MonoBehaviour
         if (input != 0)
         {
             animator.SetBool("isRunning", true);
+            isRunning = true;
             
             spriteRenderer.flipX = input < 0;
         }
         else
         {
             animator.SetBool("isRunning", false);
+            isRunning = false;
             //aa
         }
 
@@ -128,9 +141,15 @@ public class Player : MonoBehaviour
 
     private void attack()
     {
-        if (isGrounded)
+        if (isGrounded && !isRunning)
         {
-            animator.SetBool("isBrawl", true);
+            animator.Play("BrawlIdle");
+            isTransitionMuted = true;
+            nextAnimOcc = Time.time + 0.5f;
+        }
+        else if (isGrounded)
+        {
+            animator.Play("brawl");
             isTransitionMuted = true;
             nextAnimOcc = Time.time + 0.5f;
         }
@@ -144,7 +163,7 @@ public class Player : MonoBehaviour
         }
 
 
-        nextAttackOcc = Time.time + attackCooldown;
+        //nextAttackOcc = Time.time + attackCooldown;
     }
 
     private void Jump()
