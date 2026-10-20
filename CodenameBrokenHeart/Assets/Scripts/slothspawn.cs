@@ -40,7 +40,7 @@ public class slothspawn : MonoBehaviour
 
             randomX = Random.Range(minX, maxX);
             yoffset = transformComponentPlayer.position;
-            yoffset.y = yoffset.y + 5f;
+            yoffset.y = yoffset.y + 10f;
             yoffset.x = yoffset.x + randomX;
             transformComponentFollower.position = yoffset;
 
