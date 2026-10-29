@@ -39,8 +39,44 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: 1 sky
+    uniqueID: 452435353
+    locked: 0
+  - name: 2 fog
+    uniqueID: 4223780255
+    locked: 0
+  - name: 3 backforestshadow
+    uniqueID: 2121421737
+    locked: 0
+  - name: 4 backgroundlight
+    uniqueID: 2826201457
+    locked: 0
+  - name: 5 trees
+    uniqueID: 495342761
+    locked: 0
+  - name: 6 treehighlight
+    uniqueID: 2726545021
+    locked: 0
+  - name: 7 forelight
+    uniqueID: 2223294269
+    locked: 0
+  - name: 8 foretree
+    uniqueID: 1138136841
+    locked: 0
+  - name: 9 treeleaves
+    uniqueID: 2116524699
+    locked: 0
+  - name: 10 grass
+    uniqueID: 3483866109
+    locked: 0
+  - name: 11 forebushes
+    uniqueID: 2081539897
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: 12 player
+    uniqueID: 2790688551
     locked: 0
   m_RenderingLayers:
   - Default
