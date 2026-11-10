@@ -1,17 +1,32 @@
 using UnityEngine;
 
-public abstract class BuffItem : MonoBehaviour
+public class BuffItem : MonoBehaviour
 {
     [SerializeField] int buffAmt;
+    [SerializeField] bool isActive;
+    [SerializeField] Player player;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    void Awake()
     {
-        
+        if (this.gameObject.GetComponent<DropZoneObjectHandler>().CheckValidDrop())
+        {
+            isActive = true;
+        }
+    }
+    public void CheckActivated()
+    {
+        if (isActive)
+        {
+            ApplyBuff();
+        }
     }
 
     // Update is called once per frame
-    protected abstract void ApplyBuff();
+    public virtual void ApplyBuff()
+    {
+
+    }
 
 }
