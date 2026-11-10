@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 3
   tags:
   - DropZone
+  - Sloth
   layers:
   - Default
   - TransparentFX

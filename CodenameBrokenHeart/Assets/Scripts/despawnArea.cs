@@ -10,7 +10,11 @@ public class despawnArea : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Destroy(other.gameObject);
+        if (other.gameObject.CompareTag("Sloth"))
+        {
+            Destroy(other.gameObject);
+        }
+        
     }
 
 
