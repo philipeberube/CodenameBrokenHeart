@@ -2,16 +2,13 @@ using UnityEngine;
 
 public class Health : MonoBehaviour
 {
-<<<<<<< Updated upstream
-    [SerializeField] public int hp;
-=======
+
 
     [SerializeField] int maximumHealth = 5;
     [SerializeField] int currentHealth;
     [SerializeField] bool isDead = false;
 
->>>>>>> Stashed changes
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+
     void Start()
     {
         currentHealth = maximumHealth;
