@@ -4,9 +4,9 @@ public class Health : MonoBehaviour
 {
 
 
-    [SerializeField] int maximumHealth = 5;
-    [SerializeField] int currentHealth;
-    [SerializeField] bool isDead = false;
+    [SerializeField] public int maximumHealth = 5;
+    [SerializeField] public int currentHealth;
+    [SerializeField] public bool isDead = false;
 
 
     void Start()
