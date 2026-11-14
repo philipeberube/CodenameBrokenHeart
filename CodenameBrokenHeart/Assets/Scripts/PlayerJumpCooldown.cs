@@ -13,10 +13,16 @@ namespace Assets.Scripts
         [SerializeField] private float jumpForce = 5f;
         [SerializeField] private float jumpCooldown = 0.1f;
         [SerializeField] private float nextJumpTime = 0f;
-        [SerializeField] Transform groundCheck;
+        [SerializeField] private float attackCooldown = 0.1f;
+        [SerializeField] private float nextAttackTime = 0f;
+        [SerializeField] Transform transformComponent;
+
         [SerializeField] LayerMask groundLayer;
         [SerializeField] private float checkRadius = 0.1f;
         [SerializeField] private bool isGrounded = false;
+        [SerializeField] public Animator animator;
+        [SerializeField] public bool isTransitionMuted = false;
+        [SerializeField] private float nextAnimTime = 0f;
         private void Start()
         {
             rb = GetComponent<Rigidbody2D>();
@@ -24,12 +30,43 @@ namespace Assets.Scripts
         private void Update()
         {
 
-            isGrounded = Physics2D.OverlapCircle(groundCheck.position, checkRadius, groundLayer);
-            if (Input.GetKeyDown(KeyCode.Space) && isGrounded && Time.time >= nextJumpTime)
+            animator.SetBool("isBrawl", false);
+            animator.SetBool("isAA", false);
+
+            if(Time.time >= nextAnimTime)
+            {
+                isTransitionMuted = false;
+            }
+
+            isGrounded = Physics2D.OverlapCircle(transformComponent.position, checkRadius, groundLayer);
+            if (Input.GetKeyDown(KeyCode.X) && isGrounded && Time.time >= nextJumpTime)
             {
                 Jump();
                 
             }
+            else if (Input.GetKeyDown(KeyCode.Z) && Time.time >= nextAttackTime )
+            {
+                attack();
+            }
+        }
+
+        void attack()
+        {
+            if (isGrounded)
+            {
+                animator.SetBool("isBrawl", true);
+            }
+            else
+            {
+
+                animator.Play("aerialbrawl");
+                isTransitionMuted = true;
+                nextAnimTime = 1f;
+                
+            }
+
+
+            nextAttackTime = Time.time + attackCooldown;
         }
 
         void Jump()
