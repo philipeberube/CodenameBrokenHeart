@@ -799,7 +799,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 528199275}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: attackColliders
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1095,7 +1095,7 @@ GameObject:
   - component: {fileID: 803550602}
   - component: {fileID: 803550603}
   - component: {fileID: 803550604}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: brawlIdle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1111,8 +1111,8 @@ Transform:
   m_GameObject: {fileID: 803550601}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.2567, y: 0.163, z: 0}
-  m_LocalScale: {x: 0.3373083, y: 0.16691288, z: 1}
+  m_LocalPosition: {x: 0.1905, y: 0.163, z: 0}
+  m_LocalScale: {x: 0.46973553, y: 0.16691288, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 528199275}
@@ -1737,7 +1737,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1234127435}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: myColliders
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1939,7 +1939,7 @@ GameObject:
   - component: {fileID: 1507835674}
   - component: {fileID: 1507835675}
   - component: {fileID: 1507835676}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: aerialBrawl
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1955,8 +1955,8 @@ Transform:
   m_GameObject: {fileID: 1507835673}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.244, y: 0.0533, z: 0}
-  m_LocalScale: {x: 0.43117663, y: 0.24990681, z: 1}
+  m_LocalPosition: {x: 0.2016, y: 0.0533, z: 0}
+  m_LocalScale: {x: 0.51598907, y: 0.24990681, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 528199275}
@@ -2078,7 +2078,7 @@ GameObject:
   - component: {fileID: 1516715463}
   - component: {fileID: 1516715464}
   - component: {fileID: 1516715465}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: hurtbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2217,7 +2217,7 @@ GameObject:
   - component: {fileID: 1546130104}
   - component: {fileID: 1546130105}
   - component: {fileID: 1546130106}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: landHurtbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2738,7 +2738,7 @@ GameObject:
   - component: {fileID: 2057036655}
   - component: {fileID: 2057036656}
   - component: {fileID: 2057036657}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Brawl
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2754,8 +2754,8 @@ Transform:
   m_GameObject: {fileID: 2057036654}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.2933, y: 0.0711, z: 0}
-  m_LocalScale: {x: 0.4225404, y: 0.3288462, z: 1}
+  m_LocalPosition: {x: 0.2292, y: 0.0711, z: 0}
+  m_LocalScale: {x: 0.5508236, y: 0.3288462, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 528199275}

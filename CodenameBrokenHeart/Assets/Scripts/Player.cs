@@ -156,12 +156,14 @@ public class Player : MonoBehaviour
             animator.Play("BrawlIdle");
             isTransitionMuted = true;
             nextAnimOcc = Time.time + 0.5f;
+            LaunchAttack(attackColliders[0]);
         }
         else if (isGrounded)
         {
             animator.Play("brawl");
             isTransitionMuted = true;
             nextAnimOcc = Time.time + 0.5f;
+            LaunchAttack(attackColliders[1]);
         }
         else
         {
@@ -169,6 +171,7 @@ public class Player : MonoBehaviour
             animator.Play("aerialbrawl");
             isTransitionMuted = true;
             nextAnimOcc = Time.time + 0.5f;
+            LaunchAttack(attackColliders[2]);
 
         }
 
@@ -185,6 +188,12 @@ public class Player : MonoBehaviour
 
     private void LaunchAttack(Collider2D col)
     {
+        
+        Collider2D[] cols = Physics2D.OverlapBoxAll(col.bounds.center,col.bounds.extents,7 ,LayerMask.GetMask("Hitbox")); //tofix
+        foreach (Collider2D c in cols)
+        {
+            Debug.Log(c.name);
+        }
 
     }
 
