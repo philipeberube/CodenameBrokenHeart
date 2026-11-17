@@ -1659,6 +1659,10 @@ MonoBehaviour:
   speed: 7
   transformComponent: {fileID: 1223096454}
   rb: {fileID: 0}
+  attackColliders:
+  - {fileID: 803550604}
+  - {fileID: 2057036657}
+  - {fileID: 1507835676}
   isRunning: 0
 --- !u!50 &1223096456
 Rigidbody2D:

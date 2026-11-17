@@ -25,6 +25,8 @@ public class Player : MonoBehaviour
     [SerializeField] private Transform transformComponent;
     [SerializeField] public Rigidbody2D rb;
 
+    [SerializeField] public Collider2D[] attackColliders;
+
     public bool isRunning = false;
     //[SerializeField] private float jumpForce = 5f;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -126,7 +128,15 @@ public class Player : MonoBehaviour
             animator.SetBool("isRunning", true);
             isRunning = true;
             
-            spriteRenderer.flipX = input < 0;
+           
+            if (input < 0)
+            {
+                transform.localScale = new Vector3(-2, 2, 1);
+            }
+            else
+            {
+                transform.localScale = new Vector3(2, 2, 1);
+            }
         }
         else
         {
@@ -172,6 +182,12 @@ public class Player : MonoBehaviour
         rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
         nextJumpOcc = Time.time + jumpCooldown;
     }
+
+    private void LaunchAttack(Collider2D col)
+    {
+
+    }
+
 
     //private void Jump()
     //{
