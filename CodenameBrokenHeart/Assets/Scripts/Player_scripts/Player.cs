@@ -21,7 +21,10 @@ public class Player : MonoBehaviour
 
     [SerializeField] public SpriteRenderer spriteRenderer;
     [SerializeField] public Animator animator;
-    [SerializeField] private float speed = 3f;
+    [SerializeField] public float speed = 3f;
+    [SerializeField] public PlayerHealth health;
+    [SerializeField] public DamageDealer attack;
+    [SerializeField] public List<BuffItem> plateInventory;
     [SerializeField] private Transform transformComponent;
     [SerializeField] public Rigidbody2D rb;
 
@@ -67,7 +70,7 @@ public class Player : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.Z) && Time.time >= nextAnimOcc)
         {
-            attack();
+            Attack();
         }
 
 
@@ -149,7 +152,7 @@ public class Player : MonoBehaviour
 
     
 
-    private void attack()
+    private void Attack()
     {
         if (isGrounded && !isRunning)
         {
