@@ -1500,6 +1500,9 @@ GameObject:
   - component: {fileID: 1223096456}
   - component: {fileID: 1223096457}
   - component: {fileID: 1223096458}
+  - component: {fileID: 1223096461}
+  - component: {fileID: 1223096460}
+  - component: {fileID: 1223096459}
   m_Layer: 0
   m_Name: player
   m_TagString: Player
@@ -1657,6 +1660,9 @@ MonoBehaviour:
   spriteRenderer: {fileID: 1223096453}
   animator: {fileID: 1223096457}
   speed: 7
+  health: {fileID: 0}
+  attack: {fileID: 0}
+  plateInventory: []
   transformComponent: {fileID: 1223096454}
   rb: {fileID: 0}
   attackColliders:
@@ -1728,6 +1734,65 @@ MonoBehaviour:
   maximumHealth: 5
   currentHealth: 0
   isDead: 0
+  onDeath:
+    m_PersistentCalls:
+      m_Calls: []
+  onTakeDamage:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &1223096459
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1223096450}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49d9c6e38132d7c48bd7469d17596190, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BuffApplicationHandler
+  appliedBuffs: []
+  player: {fileID: 0}
+  healthBonusTotal: 0
+  speedBonusTotal: 0
+  damageBonusTotal: 0
+--- !u!114 &1223096460
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1223096450}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f9609a279252144e9c16ec17916b94b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DamageDealer
+  damage: 0
+  dmgCol: {fileID: 0}
+--- !u!114 &1223096461
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1223096450}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d5239eff47ffd64d837049a106f8eff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerHealth
+  maximumHealth: 5
+  currentHealth: 0
+  isDead: 0
+  onDeath:
+    m_PersistentCalls:
+      m_Calls: []
+  onTakeDamage:
+    m_PersistentCalls:
+      m_Calls: []
+  maxHealthTotal: 0
 --- !u!1 &1234127434
 GameObject:
   m_ObjectHideFlags: 0
