@@ -21,9 +21,14 @@ public class Player : MonoBehaviour
 
     [SerializeField] public SpriteRenderer spriteRenderer;
     [SerializeField] public Animator animator;
-    [SerializeField] private float speed = 3f;
+    [SerializeField] public float speed = 3f;
+    [SerializeField] public PlayerHealth health;
+    [SerializeField] public DamageDealer attack;
+    [SerializeField] public List<BuffItem> plateInventory;
     [SerializeField] private Transform transformComponent;
     [SerializeField] public Rigidbody2D rb;
+
+    [SerializeField] public Collider2D[] attackColliders;
 
     public bool isRunning = false;
     //[SerializeField] private float jumpForce = 5f;
@@ -65,7 +70,7 @@ public class Player : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.Z) && Time.time >= nextAnimOcc)
         {
-            attack();
+            Attack();
         }
 
 
@@ -126,7 +131,15 @@ public class Player : MonoBehaviour
             animator.SetBool("isRunning", true);
             isRunning = true;
             
-            spriteRenderer.flipX = input < 0;
+           
+            if (input < 0)
+            {
+                transform.localScale = new Vector3(-2, 2, 1);
+            }
+            else
+            {
+                transform.localScale = new Vector3(2, 2, 1);
+            }
         }
         else
         {
@@ -139,19 +152,21 @@ public class Player : MonoBehaviour
 
     
 
-    private void attack()
+    private void Attack()
     {
         if (isGrounded && !isRunning)
         {
             animator.Play("BrawlIdle");
             isTransitionMuted = true;
             nextAnimOcc = Time.time + 0.5f;
+            LaunchAttack(attackColliders[0]);
         }
         else if (isGrounded)
         {
             animator.Play("brawl");
             isTransitionMuted = true;
             nextAnimOcc = Time.time + 0.5f;
+            LaunchAttack(attackColliders[1]);
         }
         else
         {
@@ -159,6 +174,7 @@ public class Player : MonoBehaviour
             animator.Play("aerialbrawl");
             isTransitionMuted = true;
             nextAnimOcc = Time.time + 0.5f;
+            LaunchAttack(attackColliders[2]);
 
         }
 
@@ -172,6 +188,18 @@ public class Player : MonoBehaviour
         rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
         nextJumpOcc = Time.time + jumpCooldown;
     }
+
+    private void LaunchAttack(Collider2D col)
+    {
+        
+        Collider2D[] cols = Physics2D.OverlapBoxAll(col.bounds.center,col.bounds.extents,7 ,LayerMask.GetMask("Hitbox")); //tofix
+        foreach (Collider2D c in cols)
+        {
+            Debug.Log(c.name);
+        }
+
+    }
+
 
     //private void Jump()
     //{
