@@ -19,12 +19,12 @@ public class Sloth : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        /*if (other.gameObject.CompareTag("Player"))
         {
             Health health = other.gameObject.GetComponent<Health>();
             health.ChangeHealth(-1);
 
-        }
+        }*/
 
     }
 
