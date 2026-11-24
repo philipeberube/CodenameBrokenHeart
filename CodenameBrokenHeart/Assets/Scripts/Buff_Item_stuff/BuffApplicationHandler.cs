@@ -86,7 +86,7 @@ public class BuffApplicationHandler : MonoBehaviour
     {
         player.health.maxHealthTotal += healthBonusTotal;
         player.speed += speedBonusTotal;
-        player.attack.damage += damageBonusTotal;
+        player.attack.maxDmg += damageBonusTotal;
     }
     
     // Update is called once per frame
