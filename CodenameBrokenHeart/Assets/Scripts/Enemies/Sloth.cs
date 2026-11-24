@@ -21,8 +21,8 @@ public class Sloth : MonoBehaviour
     {
         /*if (other.gameObject.CompareTag("Player"))
         {
-            Health health = other.gameObject.GetComponent<Health>();
-            health.ChangeHealth(-1);
+            PlayerHealth playerhealth = other.gameObject.GetComponent<PlayerHealth>();
+            playerhealth.Heal(-1);
 
         }*/
 

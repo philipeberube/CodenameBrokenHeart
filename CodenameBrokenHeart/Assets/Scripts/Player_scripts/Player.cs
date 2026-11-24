@@ -191,11 +191,24 @@ public class Player : MonoBehaviour
 
     private void LaunchAttack(Collider2D col)
     {
-        
-        Collider2D[] cols = Physics2D.OverlapBoxAll(col.bounds.center,col.bounds.extents,7 ,LayerMask.GetMask("Hitbox")); //tofix
+        Rigidbody2D test;
+        Collider2D[] cols = Physics2D.OverlapBoxAll(col.bounds.center,col.bounds.extents,0 ,LayerMask.GetMask("Hitbox")); //tofix
         foreach (Collider2D c in cols)
         {
+            
             Debug.Log(c.name);
+
+            if (c.gameObject.CompareTag("Sloth"))
+            {
+
+                Debug.Log("hit!");
+                test = c.gameObject.GetComponent<Rigidbody2D>();
+                test.linearVelocity = new Vector2(test.linearVelocity.x+4, 5);
+
+            }
+
+
+
         }
 
     }
