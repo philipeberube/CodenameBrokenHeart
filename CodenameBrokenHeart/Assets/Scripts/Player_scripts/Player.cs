@@ -8,9 +8,9 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     [SerializeField] private float jumpForce = 5f;
-    [SerializeField] private float jumpCooldown = 0.1f;
+    [SerializeField] private float jumpCooldown = 0f;
     [SerializeField] private float nextJumpOcc = 0f;
-    [SerializeField] private float attackCooldown = 0.1f;
+    [SerializeField] private float attackCooldown = 0f;
     [SerializeField] private float nextAttackOcc = 0f;
     [SerializeField] LayerMask groundLayer;
     [SerializeField] private float checkRadius = 0.1f;
@@ -42,13 +42,6 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-        //HandleMovement();
-    }
-
-    void FixedUpdate()
-    {
-
         animator.SetBool("isBrawl", false);
         animator.SetBool("isAA", false);
 
@@ -60,8 +53,8 @@ public class Player : MonoBehaviour
         }
 
 
-            isGrounded = Physics2D.OverlapCircle(transformComponent.position, checkRadius, groundLayer);
-        animator.SetBool("isGrounded",  isGrounded);
+        isGrounded = Physics2D.OverlapCircle(transformComponent.position, checkRadius, groundLayer);
+        animator.SetBool("isGrounded", isGrounded);
 
         if (Input.GetKeyDown(KeyCode.X) && isGrounded && Time.time >= nextJumpOcc)
         {
@@ -83,7 +76,7 @@ public class Player : MonoBehaviour
         float input = Input.GetAxisRaw("Horizontal");
         float input2 = rb.linearVelocityY;
 
-        if(input2 == 0 && isTransitionMuted)
+        if (input2 == 0 && isTransitionMuted)
         {
             speed = 1f;
         }
@@ -121,7 +114,7 @@ public class Player : MonoBehaviour
         }
         else
         {
-            animator.SetBool("isJump",  false);
+            animator.SetBool("isJump", false);
             animator.SetBool("isFall", false);
         }
 
@@ -130,8 +123,8 @@ public class Player : MonoBehaviour
         {
             animator.SetBool("isRunning", true);
             isRunning = true;
-            
-           
+
+
             if (input < 0)
             {
                 transform.localScale = new Vector3(-2, 2, 1);
@@ -147,6 +140,13 @@ public class Player : MonoBehaviour
             isRunning = false;
             //aa
         }
+        //HandleMovement();
+    }
+
+    void FixedUpdate()
+    {
+
+        
 
     }
 
@@ -192,7 +192,7 @@ public class Player : MonoBehaviour
     private void LaunchAttack(Collider2D col)
     {
         Rigidbody2D test;
-        Collider2D[] cols = Physics2D.OverlapBoxAll(col.bounds.center,col.bounds.extents,0 ,LayerMask.GetMask("Hitbox")); //tofix
+        Collider2D[] cols = Physics2D.OverlapBoxAll(col.bounds.center,col.bounds.extents * 2,0 ,LayerMask.GetMask("Hitbox")); //tofix
         foreach (Collider2D c in cols)
         {
             
@@ -203,7 +203,7 @@ public class Player : MonoBehaviour
 
                 Debug.Log("hit!");
                 test = c.gameObject.GetComponent<Rigidbody2D>();
-                test.linearVelocity = new Vector2(test.linearVelocity.x+4, 5);
+                test.linearVelocity = new Vector2(test.linearVelocity.x + transform.localScale.x + rb.linearVelocityX, 3 + rb.linearVelocityY);
 
             }
 
